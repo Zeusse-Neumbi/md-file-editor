@@ -17,7 +17,7 @@ describe("Sidebar", () => {
   });
 
   it("renders nothing when no workspace is open", () => {
-    vi.mocked(useEditorStore).mockImplementation(
+    (vi.mocked(useEditorStore) as any).mockImplementation(
       (selector?: (s: Record<string, unknown>) => unknown) => {
         const state = { workspacePath: null };
         return selector ? selector(state as unknown as Record<string, unknown>) : state;
@@ -28,7 +28,7 @@ describe("Sidebar", () => {
   });
 
   it("renders file tree entries", () => {
-    vi.mocked(useEditorStore).mockImplementation(
+    (vi.mocked(useEditorStore) as any).mockImplementation(
       (selector?: (s: Record<string, unknown>) => unknown) => {
         const state = {
           fileTree: [
@@ -51,7 +51,7 @@ describe("Sidebar", () => {
   });
 
   it("highlights the currently open file", () => {
-    vi.mocked(useEditorStore).mockImplementation(
+    (vi.mocked(useEditorStore) as any).mockImplementation(
       (selector?: (s: Record<string, unknown>) => unknown) => {
         const state = {
           fileTree: [
@@ -73,7 +73,7 @@ describe("Sidebar", () => {
   });
 
   it("calls openFile when clicking a markdown file", () => {
-    vi.mocked(useEditorStore).mockImplementation(
+    (vi.mocked(useEditorStore) as any).mockImplementation(
       (selector?: (s: Record<string, unknown>) => unknown) => {
         const state = {
           fileTree: [
@@ -95,7 +95,7 @@ describe("Sidebar", () => {
   });
 
   it("does not call openFile when clicking a directory", () => {
-    vi.mocked(useEditorStore).mockImplementation(
+    (vi.mocked(useEditorStore) as any).mockImplementation(
       (selector?: (s: Record<string, unknown>) => unknown) => {
         const state = {
           fileTree: [
@@ -117,7 +117,7 @@ describe("Sidebar", () => {
   });
 
   it("shows loading state", () => {
-    vi.mocked(useEditorStore).mockImplementation(
+    (vi.mocked(useEditorStore) as any).mockImplementation(
       (selector?: (s: Record<string, unknown>) => unknown) => {
         const state = {
           fileTree: [],
@@ -134,7 +134,7 @@ describe("Sidebar", () => {
   });
 
   it("shows empty state when no files", () => {
-    vi.mocked(useEditorStore).mockImplementation(
+    (vi.mocked(useEditorStore) as any).mockImplementation(
       (selector?: (s: Record<string, unknown>) => unknown) => {
         const state = {
           fileTree: [],

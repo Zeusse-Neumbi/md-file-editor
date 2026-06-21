@@ -17,7 +17,7 @@ export function SplitPane({
   minRightSize = 20,
 }: SplitPaneProps) {
   return (
-    <Group direction="horizontal" className="flex-1 overflow-hidden">
+    <Group orientation="horizontal" className="flex-1 overflow-hidden">
       <Panel defaultSize={defaultLeftSize} minSize={minLeftSize}>
         {left}
       </Panel>

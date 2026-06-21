@@ -12,7 +12,6 @@ export function App() {
   const currentFilePath = useEditorStore((s) => s.currentFilePath);
   const openFile = useEditorStore((s) => s.openFile);
   const openDirectory = useEditorStore((s) => s.openDirectory);
-  const updateContent = useEditorStore((s) => s.updateContent);
   const saveFile = useEditorStore((s) => s.saveFile);
   const isAutosaveEnabled = useEditorStore((s) => s.isAutosaveEnabled);
 
@@ -98,7 +97,7 @@ export function App() {
       const { getCurrentWindow } = await import("@tauri-apps/api/window");
       const win = getCurrentWindow();
 
-      const unlisten = await win.onCloseRequested(async (event) => {
+      await win.onCloseRequested(async (event) => {
         const state = useEditorStore.getState();
         if (state.isModified) {
           event.preventDefault();
