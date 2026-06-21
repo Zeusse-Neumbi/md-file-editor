@@ -9,6 +9,31 @@ A lightweight, fast desktop Markdown editor with live preview. Built for technic
 
 ---
 
+## Download
+
+Grab the latest release for your platform — no build tools required.
+
+### Linux
+
+| Format | Install |
+|---|---|
+| **`.deb`** (Debian/Ubuntu) | `sudo dpkg -i MD\ Editor_*.deb` |
+| **`.rpm`** (Fedora/RHEL) | `sudo rpm -i MD\ Editor-*.rpm` |
+| **`.AppImage`** (any distro) | `chmod +x MD\ Editor-*.AppImage && ./MD\ Editor-*.AppImage` |
+
+### macOS
+
+Open the `.dmg` and drag MD Editor to your Applications folder.
+
+### Windows
+
+Run the `.msi` installer or double-click the `.exe`.
+
+> All releases are published on the [Releases page](https://github.com/Zeusse-Neumbi/md-file-editor/releases).  
+> To build from source instead, see [Building](#building).
+
+---
+
 ## Features
 
 - **Split-pane editing** — Markdown source on the left, rendered preview on the right
