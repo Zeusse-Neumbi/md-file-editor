@@ -126,7 +126,7 @@ mod tests {
     fn test_open_file_binary() {
         let dir = TempDir::new().unwrap();
         let path = dir.path().join("binary.md");
-        let bytes: Vec<u8> = (0..100).collect(); // non-UTF-8
+        let bytes: Vec<u8> = vec![0xFF, 0xFE, 0x80, 0xC0]; // non-UTF-8 bytes
         fs::write(&path, &bytes).unwrap();
         let result = open_file(path.to_string_lossy().to_string());
         assert!(result.is_err());
