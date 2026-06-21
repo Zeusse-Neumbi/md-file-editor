@@ -1,0 +1,5 @@
+# Rust build output
+target/
+
+# Icon rasterization outputs
+icons/*.png

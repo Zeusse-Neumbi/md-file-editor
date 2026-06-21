@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nicedoc/tauri/refs/heads/dev/crates/tauri-utils/schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "dialog:default",
+    "dialog:allow-open",
+    "dialog:allow-save",
+    "dialog:allow-message",
+    "dialog:allow-ask",
+    "fs:default",
+    {
+      "identifier": "fs:read-all",
+      "allow": [
+        { "path": "$HOME/**" },
+        { "path": "$PWD/**" }
+      ]
+    },
+    {
+      "identifier": "fs:write-all",
+      "allow": [
+        { "path": "$HOME/**" },
+        { "path": "$PWD/**" }
+      ]
+    }
+  ]
+}

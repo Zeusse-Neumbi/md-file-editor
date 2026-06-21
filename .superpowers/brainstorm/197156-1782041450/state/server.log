@@ -1,0 +1,7 @@
+{"type":"server-started","port":59946,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:59946","screen_dir":"/home/nkz/Documents/md file editor/.superpowers/brainstorm/197156-1782041450/content","state_dir":"/home/nkz/Documents/md file editor/.superpowers/brainstorm/197156-1782041450/state"}
+{"type":"screen-added","file":"/home/nkz/Documents/md file editor/.superpowers/brainstorm/197156-1782041450/content/layout.html"}
+{"source":"user-event","type":"click","text":"👍\n    \n      Looks good — continue\n      This layout works for v1. Move to final details.","choice":"approve","id":null,"timestamp":1782041594920}
+{"source":"user-event","type":"click","text":"👍\n    \n      Looks good — continue\n      This layout works for v1. Move to final details.","choice":"approve","id":null,"timestamp":1782041614100}
+{"source":"user-event","type":"click","text":"👍\n    \n      Looks good — continue\n      This layout works for v1. Move to final details.","choice":"approve","id":null,"timestamp":1782041614928}
+{"type":"screen-added","file":"/home/nkz/Documents/md file editor/.superpowers/brainstorm/197156-1782041450/content/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

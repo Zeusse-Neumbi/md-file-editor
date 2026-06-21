@@ -1,0 +1,130 @@
+<h2>Main Layout: MD Editor</h2>
+<p class="subtitle">Resizable split-pane with optional sidebar</p>
+
+<div class="mockup" style="max-width: 100%; margin-top: 1rem;">
+  <div class="mockup-header">Application Window</div>
+  <div class="mockup-body" style="padding: 0;">
+    
+    <!-- Title Bar -->
+    <div style="background: #1e293b; color: #94a3b8; padding: 6px 12px; font-size: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid #334155;">
+      <span>~/projects/docs/readme.md *</span>
+      <span style="display: flex; gap: 16px;">
+        <span style="color: #22c55e;">● Saved</span>
+        <span>File  Edit  View</span>
+      </span>
+    </div>
+
+    <!-- Body: Sidebar + Split Pane -->
+    <div style="display: flex; height: 400px;">
+      
+      <!-- Sidebar (folder mode) -->
+      <div style="width: 200px; background: #0f172a; border-right: 1px solid #1e293b; display: flex; flex-direction: column; font-size: 13px;">
+        <div style="padding: 8px 12px; color: #64748b; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #1e293b;">
+          docs/
+        </div>
+        <div style="padding: 4px 0; flex: 1; overflow-y: auto;">
+          <div style="padding: 4px 12px; color: #94a3b8;">📁 guides/</div>
+          <div style="padding: 4px 12px; color: #94a3b8;">📁 assets/</div>
+          <div style="padding: 4px 12px; color: #e2e8f0; background: #1e293b; border-left: 2px solid #3b82f6;">📄 readme.md</div>
+          <div style="padding: 4px 12px; color: #94a3b8;">📄 getting-started.md</div>
+          <div style="padding: 4px 12px; color: #94a3b8;">📄 architecture.md</div>
+          <div style="padding: 4px 12px; color: #94a3b8;">📄 contributing.md</div>
+        </div>
+      </div>
+
+      <!-- Main content: Editor | Preview split -->
+      <div style="flex: 1; display: flex;">
+
+        <!-- Editor Pane -->
+        <div style="flex: 1; background: #0f172a; display: flex; flex-direction: column; min-width: 0;">
+          <div style="padding: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #e2e8f0; line-height: 1.6; overflow-y: auto; flex: 1; white-space: pre-wrap;">
+<span style="color: #6366f1;">#</span><span style="color: #818cf8;"> Getting Started</span>
+
+Welcome to the project! This guide will get you up and running.
+
+<span style="color: #6366f1;">##</span><span style="color: #818cf8;"> Installation</span>
+
+<span style="color: #64748b;">\`\`\`bash</span>
+<span style="color: #22c55e;">npm install</span>
+<span style="color: #64748b;">\`\`\`</span>
+
+<span style="color: #6366f1;">##</span><span style="color: #818cf8;"> Usage</span>
+
+To start the server, run:
+
+<span style="color: #64748b;">\`\`\`bash</span>
+<span style="color: #22c55e;">npm run dev</span>
+<span style="color: #64748b;">\`\`\`</span>
+
+> **Note:** Make sure you have <span style="color: #f472b6;">Node.js</span> &gt;= 18 installed.
+          </div>
+          <!-- Editor status bar -->
+          <div style="background: #1e293b; padding: 3px 12px; font-size: 11px; color: #64748b; display: flex; justify-content: space-between; border-top: 1px solid #334155;">
+            <span>Ln 12, Col 34</span>
+            <span>Markdown</span>
+            <span>UTF-8</span>
+          </div>
+        </div>
+
+        <!-- Resize Handle -->
+        <div style="width: 4px; background: #1e293b; cursor: col-resize;"></div>
+        <div style="width: 4px; background: #334155; cursor: col-resize;"></div>
+
+        <!-- Preview Pane -->
+        <div style="flex: 1; background: #ffffff; display: flex; flex-direction: column; min-width: 0;">
+          <div style="padding: 20px; overflow-y: auto; flex: 1;">
+            
+            <h1 style="font-size: 24px; font-weight: 700; margin: 0 0 8px 0; color: #111;">Getting Started</h1>
+            <p style="color: #374151; line-height: 1.6; margin: 0 0 16px 0;">Welcome to the project! This guide will get you up and running.</p>
+            
+            <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 8px 0; color: #111;">Installation</h2>
+            <div style="background: #1e293b; border-radius: 6px; padding: 12px 16px; margin-bottom: 16px;">
+              <pre style="margin: 0; color: #e2e8f0; font-size: 13px;">npm install</pre>
+            </div>
+            
+            <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 8px 0; color: #111;">Usage</h2>
+            <p style="color: #374151; line-height: 1.6; margin: 0 0 8px 0;">To start the server, run:</p>
+            <div style="background: #1e293b; border-radius: 6px; padding: 12px 16px; margin-bottom: 16px;">
+              <pre style="margin: 0; color: #e2e8f0; font-size: 13px;">npm run dev</pre>
+            </div>
+            
+            <blockquote style="border-left: 4px solid #3b82f6; margin: 0 0 16px 0; padding: 8px 16px; background: #eff6ff; border-radius: 0 6px 6px 0;">
+              <p style="margin: 0; color: #1e40af;"><strong>Note:</strong> Make sure you have <code style="background: #dbeafe; padding: 1px 4px; border-radius: 3px;">Node.js</code> &gt;= 18 installed.</p>
+            </blockquote>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 1.5rem;">
+  <h3>Layout behavior summary</h3>
+  <ul>
+    <li><strong>Sidebar</strong> — appears only in folder/workspace mode. Toggle with <kbd>Ctrl+B</kbd>. Shows file tree.</li>
+    <li><strong>Editor pane</strong> — dark theme, monospace font, syntax-highlighted Markdown. Status bar shows cursor position.</li>
+    <li><strong>Resize handle</strong> — drag to adjust editor/preview ratio. Default 50/50.</li>
+    <li><strong>Preview pane</strong> — light theme (or dark), renders GFM with code highlighting.</li>
+    <li><strong>Title bar</strong> — shows file path, modified indicator (*), save status.</li>
+  </ul>
+</div>
+
+<div class="options" style="margin-top: 0.5rem;">
+  <p class="subtitle" style="margin-bottom: 0.5rem;">Pick the option that feels right:</p>
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">👍</div>
+    <div class="content">
+      <h3>Looks good — continue</h3>
+      <p>This layout works for v1. Move to final details.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="changes" onclick="toggleSelect(this)">
+    <div class="letter">✏️</div>
+    <div class="content">
+      <h3>I'd like changes</h3>
+      <p>Something about the layout needs adjustment first.</p>
+    </div>
+  </div>
+</div>
