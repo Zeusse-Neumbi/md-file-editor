@@ -1,0 +1,87 @@
+.md-preview {
+  padding: 16px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #24292e;
+  font-size: 14px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.md-preview h1 { font-size: 2em; border-bottom: 1px solid #e1e4e8; padding-bottom: 0.3em; margin: 0.67em 0; }
+.md-preview h2 { font-size: 1.5em; border-bottom: 1px solid #e1e4e8; padding-bottom: 0.3em; margin: 0.83em 0; }
+.md-preview h3 { font-size: 1.25em; margin: 1em 0; }
+.md-preview h4 { font-size: 1em; margin: 1.33em 0; }
+.md-preview h5 { font-size: 0.875em; margin: 1.67em 0; }
+.md-preview h6 { font-size: 0.85em; color: #6a737d; margin: 2.33em 0; }
+
+.md-preview p { margin: 0 0 16px; }
+
+.md-preview a { color: #0366d6; text-decoration: none; }
+.md-preview a:hover { text-decoration: underline; }
+
+.md-preview blockquote {
+  margin: 0 0 16px;
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.md-preview code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+.md-preview pre {
+  margin: 0 0 16px;
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.md-preview pre code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.md-preview table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 0 0 16px;
+}
+
+.md-preview table th,
+.md-preview table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.md-preview table tr:nth-child(2n) { background-color: #f6f8fa; }
+
+.md-preview img { max-width: 100%; box-sizing: content-box; }
+.md-preview hr { height: 0.25em; padding: 0; margin: 24px 0; background-color: #e1e4e8; border: 0; }
+
+.md-preview ul, .md-preview ol {
+  padding-left: 2em;
+  margin: 0 0 16px;
+}
+
+.md-preview li { word-wrap: break-word; }
+.md-preview li + li { margin-top: 0.25em; }
+
+.md-preview input[type="checkbox"] {
+  margin-right: 0.5em;
+}
