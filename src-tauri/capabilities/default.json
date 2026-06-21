@@ -8,21 +8,14 @@
     "dialog:default",
     "dialog:allow-open",
     "dialog:allow-save",
-    "dialog:allow-message",
     "dialog:allow-ask",
     "fs:default",
     {
-      "identifier": "fs:read-all",
+      "identifier": "fs:scope",
       "allow": [
         { "path": "$HOME/**" },
-        { "path": "$PWD/**" }
-      ]
-    },
-    {
-      "identifier": "fs:write-all",
-      "allow": [
-        { "path": "$HOME/**" },
-        { "path": "$PWD/**" }
+        { "path": "$DESKTOP/**" },
+        { "path": "$DOCUMENT/**" }
       ]
     }
   ]
