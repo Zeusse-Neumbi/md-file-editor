@@ -3,7 +3,7 @@ name = "md-editor"
 version = "0.1.0"
 description = "A desktop Markdown editor with live preview"
 authors = ["you"]
-edition = "2021"
+edition = "2024"
 
 [lib]
 name = "md_editor_lib"
