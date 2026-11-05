@@ -3,9 +3,14 @@ node_modules/
 
 # Build output
 dist/
+coverage/
 
 # Rust
 src-tauri/target/
+
+# Local environment
+.env
+.env.*
 
 # OS
 .DS_Store
@@ -18,4 +23,5 @@ Thumbs.db
 *.swo
 
 # Agent/planning artifacts
+.superpowers/
 docs/superpowers/

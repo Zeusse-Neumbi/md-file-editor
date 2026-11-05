@@ -2,12 +2,26 @@
   "name": "md-editor",
   "private": true,
   "version": "0.1.0",
+  "description": "A focused desktop Markdown editor with live preview, built with Tauri 2, React 19, and Rust.",
+  "license": "MIT",
+  "author": "Neumbi Kemgang Zeusse",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zeusse-Neumbi/md-file-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zeusse-Neumbi/md-file-editor/issues"
+  },
+  "homepage": "https://github.com/Zeusse-Neumbi/md-file-editor#readme",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@codemirror/lang-markdown": "^6.5.0",

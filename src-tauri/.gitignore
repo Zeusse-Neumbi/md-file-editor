@@ -1,5 +1,5 @@
 # Rust build output
 target/
 
-# Icon rasterization outputs
-icons/*.png
+# Generated Tauri schemas
+/gen/schemas/

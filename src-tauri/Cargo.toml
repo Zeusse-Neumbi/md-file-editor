@@ -1,8 +1,10 @@
 [package]
 name = "md-editor"
 version = "0.1.0"
-description = "A desktop Markdown editor with live preview"
-authors = ["you"]
+description = "A focused desktop Markdown editor with live preview"
+authors = ["Neumbi Kemgang Zeusse"]
+license = "MIT"
+repository = "https://github.com/Zeusse-Neumbi/md-file-editor"
 edition = "2024"
 
 [lib]

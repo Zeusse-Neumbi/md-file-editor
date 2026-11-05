@@ -1,62 +1,54 @@
 # MD Editor
 
-A lightweight, fast desktop Markdown editor with live preview. Built for technical writers and developers who want a focused editing experience with optional workspace/file-tree navigation.
+A focused desktop Markdown editor with live preview, a file-tree workspace, and
+autosave. Built with Tauri 2, React 19, TypeScript, and Rust.
 
-![Tauri](https://img.shields.io/badge/Tauri-2.11-FFC131?logo=tauri)
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
-![Rust](https://img.shields.io/badge/Rust-1.96-000000?logo=rust)
-![License](https://img.shields.io/badge/license-MIT-blue)
+[![CI](https://github.com/Zeusse-Neumbi/md-file-editor/actions/workflows/ci.yml/badge.svg)](https://github.com/Zeusse-Neumbi/md-file-editor/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/Zeusse-Neumbi/md-file-editor)](https://github.com/Zeusse-Neumbi/md-file-editor/releases)
 
----
+![MD Editor screenshot](docs/screenshot.png)
 
-## Download
+## Why
 
-Grab the latest release for your platform — no build tools required.
-
-### Linux
-
-| Format | Install |
-|---|---|
-| **`.deb`** (Debian/Ubuntu) | `sudo dpkg -i MD\ Editor_*.deb` |
-| **`.rpm`** (Fedora/RHEL) | `sudo rpm -i MD\ Editor-*.rpm` |
-| **`.AppImage`** (any distro) | `chmod +x MD\ Editor-*.AppImage && ./MD\ Editor-*.AppImage` |
-
-### macOS
-
-Open the `.dmg` and drag MD Editor to your Applications folder.
-
-### Windows
-
-Run the `.msi` installer or double-click the `.exe`.
-
-> All releases are published on the [Releases page](https://github.com/Zeusse-Neumbi/md-file-editor/releases).  
-> To build from source instead, see [Building](#building).
-
----
+Most Markdown editors either bury the preview behind a toggle or turn a single
+file into a project. MD Editor keeps the source and rendered output side by
+side, and adds a workspace tree only when you open a folder.
 
 ## Features
 
 - **Split-pane editing** — Markdown source on the left, rendered preview on the right
-- **Live preview** — GitHub Flavored Markdown with code syntax highlighting, updated in real time
-- **Autosave** — Automatically saves 1.5 seconds after you stop typing
-- **Manual save** — Ctrl+S to save immediately
-- **File/folder modes** — Open a single `.md` file or an entire workspace folder
-- **File tree sidebar** — Browse and open files when working in folder mode
-- **Drag & drop** — Drop `.md` files or folders onto the window
-- **Dark editor theme** — Easy on the eyes for long writing sessions
-- **Light preview theme** — GitHub-style rendered output
-- **XSS protection** — All HTML output sanitized via DOMPurify
-- **Unsaved changes prompt** — Never lose work by accident
+- **Live preview** — GitHub Flavored Markdown with syntax highlighting
+- **Autosave** — saves 1.5 seconds after you stop typing
+- **Manual save** — `Ctrl+S` / `Cmd+S`
+- **Single-file and folder modes** — open one `.md` file or a whole workspace
+- **File tree sidebar** — browse and switch between Markdown files
+- **Drag and drop** — drop a `.md` file or folder onto the window
+- **Keyboard shortcuts** — open file, open folder, toggle the sidebar, save
+- **XSS protection** — rendered HTML is sanitized with DOMPurify before display
+- **Unsaved-changes prompt** — save before closing the window
 
-## Screenshots
+## Install
 
-*(Coming soon)*
+Installers are published on the [Releases page](https://github.com/Zeusse-Neumbi/md-file-editor/releases).
+The release workflow builds:
 
-## Prerequisites
+| Platform | Packages |
+| --- | --- |
+| Linux | `.deb`, `.rpm`, `.AppImage` |
+| macOS | `.dmg` |
+| Windows | `.msi`, `.exe` |
 
-- **Node.js** 20+ and **npm**
-- **Rust** toolchain (install via [rustup](https://rustup.rs/))
-- **System dependencies** (Linux):
+Linux packages are unsigned. macOS and Windows builds are unsigned development
+builds, so the operating system may show a warning on first launch.
+
+## Build from source
+
+### Prerequisites
+
+- Node.js 20+ and npm
+- Rust toolchain via [rustup](https://rustup.rs/)
+- Linux system dependencies:
 
 ```bash
 sudo apt update && sudo apt install \
@@ -71,162 +63,126 @@ sudo apt update && sudo apt install \
   librsvg2-dev
 ```
 
-For macOS or Windows, see the [Tauri prerequisites guide](https://v2.tauri.app/start/prerequisites/).
+For macOS and Windows prerequisites, see the
+[Tauri prerequisites guide](https://v2.tauri.app/start/prerequisites/).
 
-## Getting Started
+### Run in development
 
 ```bash
-# Clone the repository
 git clone https://github.com/Zeusse-Neumbi/md-file-editor.git
 cd md-file-editor
-
-# Install frontend dependencies
-npm install
-
-# Run in development mode
+npm ci
 npm run tauri dev
 ```
 
-This will start the Vite dev server and open a Tauri window with hot-reload enabled.
-
-## Building
+### Build a package
 
 ```bash
-# Production build (optimized)
 npm run tauri build
-
-# Debug build (larger binary, retains debug symbols)
-npm run tauri build --debug
 ```
 
-Build artifacts are written to `src-tauri/target/release/` (or `debug/`).
-
-### Linux Packages
-
-| Format | Path |
-|---|---|
-| `.deb` | `src-tauri/target/release/bundle/deb/` |
-| `.rpm` | `src-tauri/target/release/bundle/rpm/` |
-| `.AppImage` | `src-tauri/target/release/bundle/appimage/` |
-
-The same codebase builds for macOS (`.dmg`) and Windows (`.msi`/`.exe`) by running `tauri build` on those platforms with zero code changes.
+Artifacts are written to `src-tauri/target/release/bundle/`.
 
 ## Usage
 
-### Single-file mode
+Open a Markdown file with **Open file**, `Ctrl+O` / `Cmd+O`, or by dropping a
+file onto the window. Open a folder with **Open folder**, `Ctrl+Shift+O` /
+`Cmd+Shift+O`, or by dropping a folder onto the window.
 
-Open a single Markdown file to get a clean two-pane editor: editor on the left, preview on the right.
-
-**Ways to open a file:**
-- `File > Open File` (Ctrl+O)
-- Drag and drop a `.md` file onto the window
-- CLI: `md-editor path/to/file.md`
-
-### Folder/Workspace mode
-
-Open a folder to browse its contents in a sidebar and edit any Markdown file within.
-
-**Ways to open a folder:**
-- `File > Open Folder` (Ctrl+Shift+O)
-- Drag and drop a folder onto the window
-- CLI: `md-editor path/to/directory/`
-
-### Keyboard shortcuts
+When a folder is open, the sidebar lists its Markdown files. Click a file to
+open it; the editor autosaves changes after 1.5 seconds, and `Ctrl+S` saves
+immediately.
 
 | Shortcut | Action |
-|---|---|
-| `Ctrl+S` | Save current file |
-| `Ctrl+O` | Open file |
-| `Ctrl+Shift+O` | Open folder |
-| `Ctrl+B` | Toggle sidebar (folder mode) |
+| --- | --- |
+| `Ctrl+O` / `Cmd+O` | Open file |
+| `Ctrl+Shift+O` / `Cmd+Shift+O` | Open folder |
+| `Ctrl+S` / `Cmd+S` | Save |
+| `Ctrl+B` / `Cmd+B` | Toggle sidebar (folder mode) |
 
-## Tech Stack
+## Architecture
 
-| Layer | Technology | Version |
-|---|---|---|
-| Desktop framework | [Tauri 2](https://v2.tauri.app/) | ^2.11 |
-| Backend | [Rust](https://www.rust-lang.org/) | edition 2024 |
-| Frontend | [React](https://react.dev/) | ^19 |
-| Build tool | [Vite](https://vitejs.dev/) | ^8 |
-| Language | [TypeScript](https://www.typescriptlang.org/) | ^5.7 |
-| Editor | [CodeMirror 6](https://codemirror.net/) | ^6.0 |
-| Markdown parser | [marked](https://marked.js.org/) | ^18 |
-| HTML sanitizer | [DOMPurify](https://github.com/cure53/DOMPurify) | ^3 |
-| State management | [Zustand](https://zustand.docs.pmnd.rs/) | ^5 |
-| Styling | [Tailwind CSS](https://tailwindcss.com/) | ^4 |
-| Layout | [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels) | ^4.11 |
-| Syntax highlight | [highlight.js](https://highlightjs.org/) | ^11.9 |
-
-## Project Structure
-
+```mermaid
+flowchart LR
+    UI[React + CodeMirror 6] -->|invoke| IPC[Typed IPC layer]
+    IPC --> Rust[Tauri commands]
+    Rust --> FS[(Local filesystem)]
+    UI --> Preview[marked + DOMPurify]
 ```
-md-editor/
-├── src-tauri/              # Rust backend (Tauri)
-│   ├── src/
-│   │   ├── commands/
-│   │   │   ├── file.rs     # File I/O IPC commands
-│   │   │   └── app.rs      # App metadata commands
-│   │   ├── models.rs       # Data models (FileEntry, FileState)
-│   │   ├── lib.rs          # Command registration
-│   │   └── main.rs         # Entry point
-│   ├── tauri.conf.json     # Tauri configuration
-│   └── Cargo.toml
-├── src/                    # React frontend
-│   ├── components/
-│   │   ├── App.tsx         # Root component, mode detection, autosave
-│   │   ├── SplitPane.tsx   # Resizable editor/preview layout
-│   │   ├── Editor.tsx      # CodeMirror 6 editor
-│   │   ├── Preview.tsx     # Markdown rendered preview
-│   │   ├── Sidebar.tsx     # File tree (folder mode)
-│   │   ├── TitleBar.tsx    # Path and save status
-│   │   └── Toast.tsx       # Notifications
-│   ├── stores/
-│   │   └── useEditorStore.ts  # Zustand state management
-│   ├── lib/
-│   │   ├── ipc.ts          # Typed Tauri invoke wrappers
-│   │   ├── markdown.ts     # marked + DOMPurify + highlight.js
-│   │   └── utils.ts        # Helpers (debounce)
-│   ├── styles/
-│   │   ├── globals.css     # Tailwind v4 + theme variables
-│   │   └── preview.css     # GFM preview styling
-│   ├── __tests__/          # Vitest test suite
-│   ├── main.tsx            # React entry point
-│   └── index.html
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
+
+The frontend never touches the filesystem directly. File reads, writes, folder
+listing, and file-status checks go through typed commands in `src-tauri`; the
+Rust side validates paths and returns structured results. Markdown is rendered
+with `marked`, sanitized with DOMPurify, and highlighted with `highlight.js`.
+
+## Tech stack
+
+| Layer | Technology |
+| --- | --- |
+| Desktop framework | Tauri 2 |
+| Backend | Rust 2024 |
+| Frontend | React 19 + TypeScript |
+| Build tool | Vite 6 |
+| Editor | CodeMirror 6 |
+| Markdown | marked + highlight.js |
+| Sanitizer | DOMPurify |
+| State | Zustand 5 |
+| Styling | Tailwind CSS 4 |
+| Layout | react-resizable-panels |
+| Tests | Vitest + Rust `#[test]` |
+
+## Project structure
+
+```text
+md-file-editor/
+├── src/                  # React frontend
+│   ├── components/       # Editor, Preview, Sidebar, TitleBar, Toast
+│   ├── lib/              # IPC wrappers, Markdown, file picker
+│   ├── stores/           # Zustand editor state
+│   └── __tests__/        # Vitest suite
+├── src-tauri/            # Rust backend and Tauri configuration
+│   └── src/commands/     # File and app commands
+├── docs/                 # Screenshots and design notes
+└── .github/workflows/    # CI and release automation
 ```
 
 ## Testing
 
 ```bash
-# Run all frontend tests
-npx vitest run
-
-# Run all Rust tests
-cd src-tauri && cargo test
-
-# Run all tests (both)
-cd src-tauri && cargo test && cd .. && npx vitest run
+npm test                  # 37 frontend tests
+npm run typecheck         # TypeScript, no emit
+cd src-tauri && cargo test # 15 Rust tests
 ```
 
-### Test coverage
+The suite covers Markdown rendering and sanitization, store actions, editor
+mounting, preview updates, and the sidebar. CI also runs `cargo fmt --check`,
+`cargo clippy -- -D warnings`, and a production frontend build.
 
-| Suite | Tests | Scope |
-|---|---|---|
-| Frontend | 37 | Markdown rendering, store actions, editor, preview, sidebar |
-| Backend | 15 | File read/write, directory listing, error handling |
+## Design notes
 
-## Future Plans (v2+)
+- **Filesystem access stays in Rust.** The React layer calls a small typed IPC
+  surface instead of using browser filesystem APIs. That keeps path handling and
+  error reporting in one place.
+- **Autosave is debounced, not periodic.** A 1.5-second timer resets on each
+  keystroke, so long writing sessions do not produce a write per character.
+- **Markdown is untrusted input.** `marked` output passes through DOMPurify
+  before it reaches the preview. The app does not render raw HTML from a file
+  without sanitization.
+- **The workspace tree is optional.** Single-file mode has no sidebar; opening a
+  folder adds one and keeps the last-opened file in the editor.
 
-- Git integration: file status, staging, commit, diff view
-- Multi-tab editing
-- Image paste/drag support
-- Custom CSS themes for preview
-- Search & replace across files
-- Vim keybindings mode
-- Mobile app (Tauri 2 supports iOS/Android)
+## Limitations and next steps
+
+- No multi-tab editing or split views beyond the editor/preview pane.
+- No search-and-replace across a workspace.
+- No Git integration or file watching yet.
+- Release packages are unsigned, so macOS and Windows show first-launch
+  warnings.
+- Large documents are rendered in one pass; virtualized preview is future work.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow and
+[SECURITY.md](SECURITY.md) for vulnerability reporting.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) © 2026 Neumbi Kemgang Zeusse
