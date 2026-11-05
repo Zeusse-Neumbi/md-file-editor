@@ -36,11 +36,12 @@ The release workflow builds:
 | Platform | Packages |
 | --- | --- |
 | Linux | `.deb`, `.rpm`, `.AppImage` |
-| macOS | `.dmg` |
+| macOS (Apple Silicon) | `.dmg` |
 | Windows | `.msi`, `.exe` |
 
 Linux packages are unsigned. macOS and Windows builds are unsigned development
-builds, so the operating system may show a warning on first launch.
+builds, so the operating system may show a warning on first launch. Intel Mac
+users can build from source with the steps below.
 
 ## Build from source
 
