@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useRef } from "react";
+import { isTauri } from "@tauri-apps/api/core";
 import { SplitPane } from "./SplitPane";
 import { Editor } from "./Editor";
 import { Preview } from "./Preview";
@@ -6,9 +7,11 @@ import { Sidebar } from "./Sidebar";
 import { TitleBar } from "./TitleBar";
 import { Toast } from "./Toast";
 import { useEditorStore } from "../stores/useEditorStore";
+import { pickFile, pickFolder } from "../lib/filePicker";
 
 export function App() {
   const workspacePath = useEditorStore((s) => s.workspacePath);
+  const isSidebarOpen = useEditorStore((s) => s.isSidebarOpen);
   const currentFilePath = useEditorStore((s) => s.currentFilePath);
   const openFile = useEditorStore((s) => s.openFile);
   const openDirectory = useEditorStore((s) => s.openDirectory);
@@ -64,8 +67,37 @@ export function App() {
     [openFile]
   );
 
+  // Keyboard shortcuts for the same actions exposed in the title bar.
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      const modifier = event.ctrlKey || event.metaKey;
+      if (!modifier) return;
+
+      const key = event.key.toLowerCase();
+      if (key === "o") {
+        event.preventDefault();
+        if (event.shiftKey) {
+          void pickFolder();
+        } else {
+          void pickFile();
+        }
+      }
+
+      if (key === "b" && !event.shiftKey) {
+        event.preventDefault();
+        const state = useEditorStore.getState();
+        state.setSidebarOpen(!state.isSidebarOpen);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   // Listen for Tauri drag-drop events
   useEffect(() => {
+    if (!isTauri()) return;
+
     let unlisten: (() => void) | undefined;
 
     async function setup() {
@@ -93,6 +125,8 @@ export function App() {
 
   // Listen for unsaved changes on window close
   useEffect(() => {
+    if (!isTauri()) return;
+
     async function setup() {
       const { getCurrentWindow } = await import("@tauri-apps/api/window");
       const win = getCurrentWindow();
@@ -129,7 +163,7 @@ export function App() {
       <TitleBar />
 
       <div className="flex-1 flex overflow-hidden">
-        {workspacePath && <Sidebar />}
+        {workspacePath && isSidebarOpen && <Sidebar />}
 
         <SplitPane
           left={<Editor />}
